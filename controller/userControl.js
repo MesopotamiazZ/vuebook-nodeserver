@@ -9,6 +9,14 @@ userControl.getUserInfo=function(app){
     })
   })
 }
+userControl.hasUser=function(app) {
+	app.get('/get-hasUser', function(req, res) {
+		userDao.hasUser(req.query).then(function(data) {
+			res.status(200)
+			res.json(data)
+		})
+	})
+}
 // userControl.getTset=function(app){
 //  app.get('/get-test',function(req,res){
 //  	userDao.test().then(function(value){

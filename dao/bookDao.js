@@ -3,7 +3,7 @@ var enCryption = require('../tools/enCryption')
 var bookDao={}
 bookDao.getPage=function(data){
 	return  new Promise(function(resolve,reject){
-	    var sql = 'SELECT bid,uid,date_format(bdate,"%Y-%m-%d") bdate,baccount,bcategory,bremark,bincomeorpay FROM account_book limit '+(data.start-1)*data.end+','+data.end;
+	    var sql = 'SELECT bid,uid,date_format(bdate,"%Y-%m-%d") bdate,baccount,bcategory,bremark,bincomeorpay FROM account_book WHERE uid = '+data.uid+' limit '+(data.start-1)*data.end+','+data.end;
 	    jdbc.query(sql, function (error, results, fields) {
 		    if (error) {
 		      return jdbc.rollback(function() {
