@@ -16,6 +16,21 @@ userDao.getAllUser=function(){
 		})
     })
 }
+
+userDao.hasUser=function(data) {
+	return new Promise(function(resolve, reject) {
+		var sql = 'SELECT * FROM account_users WHERE username = "'+data.username+'"'
+		jdbc.query(sql, function (error, results, fields) {
+			if (error) {
+				return jdbc.rollback(function() {
+					throw error
+				})
+			} else {
+				resolve(results)
+			}
+		})
+	})
+}
 module.exports = userDao
 
 
