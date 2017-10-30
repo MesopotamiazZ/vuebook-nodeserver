@@ -19,7 +19,6 @@ bookDao.add=function(data){
 	return  new Promise(function(resolve,reject){
 	    var sql = 'INSERT INTO account_book(uid,bincomeorpay,bdate,baccount,bcategory,bremark) VALUES('+data.uid+','+data.bincomeorpay+',"'+data.bdate+'",'+data.baccount+','+data.bcategory+
 	               ',"'+data.bremark+'")'
-	               console.log(sql)
 	    jdbc.query(sql, function (error, results, fields) {
 		    if (error) {
 		      return jdbc.rollback(function() {
